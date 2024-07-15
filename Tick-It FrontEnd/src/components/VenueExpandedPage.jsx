@@ -31,14 +31,9 @@ export default function VenueExpandedPage (props) {
         <h3>Description: {venue.details}</h3>
 
         </div>
-        <div className='expandedImage'
-        style={{
-          backgroundImage: `url(${venue.image_url})`, 
-          backgroundSize:'400px', 
-          backgroundPosition: 'center center'
-        }} 
-          >
-        </div>
+        <img src = {venue.image_url} 
+        className='expandedImage'
+        />
       </div>
     </div>
   ) 

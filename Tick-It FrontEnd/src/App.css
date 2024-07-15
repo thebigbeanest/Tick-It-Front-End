@@ -168,7 +168,8 @@ body {
   /* color: yellow; */
   /* padding: 10px; */
   margin: 10px;
-  width: 400px;
+  height: 200px;
+  width: auto;
   /* height: 500px; */
 }
 

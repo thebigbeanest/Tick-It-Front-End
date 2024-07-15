@@ -31,14 +31,9 @@ export default function EventExpandedPage (props) {
         <h3>Details: {event.details}</h3>
 
         </div>
-        <div className='expandedImage'
-        style={{
-          backgroundImage: `url(${event.image_url})`, 
-          backgroundSize:'400px', 
-          backgroundPosition: 'center center'
-        }} 
-          >
-        </div>
+        <img src = {event.image_url} 
+        className='expandedImage'
+        />
       </div>
     </div>
   ) 
