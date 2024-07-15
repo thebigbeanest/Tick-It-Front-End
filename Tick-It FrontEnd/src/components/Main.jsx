@@ -1,10 +1,10 @@
 import {Route, Routes} from 'react-router-dom'
-import FileNotFound from './FileNotFound'
 import Home from './Home'
-import VenueExpandedPage from './VenueExpandedPage'
 import VenueList from './VenueList'
-import EventExpandedPage from './EventExpandedPage'
+import VenueExpandedPage from './VenueExpandedPage'
 import EventList from './EventList'
+import EventExpandedPage from './EventExpandedPage'
+import FileNotFound from './FileNotFound'
 export default function Main (props) {
     return (
 <div className="main">
