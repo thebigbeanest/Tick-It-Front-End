@@ -1,12 +1,13 @@
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import Nav from './Nav'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 export default function EventCreationPage() {
 
+    const { eventID } = useParams()
     let navigate = useNavigate()
-
+    const [currentEvent,setCurrentEvent] = useState({})
     const [inputInProgress, setInputInProgress] = useState({ 
         venue: '',
         name: '',
@@ -18,23 +19,44 @@ export default function EventCreationPage() {
         image_url: '',
     });
 
+    useEffect(() => {
+  
+        const getCurrentEvent = async () => {
+          const response = await axios.get(`http://127.0.0.1:8000/events/${eventID}`)
+          const event_data = response.data
+          setCurrentEvent(event_data)
+      }
+      getCurrentEvent()
+      
+  }, [])
+
+  useEffect(() => {
+    setInputInProgress({
+        venue: currentEvent.venue_id || "",
+        name: currentEvent.name || "",
+        starttime: currentEvent.start_time || "",
+        endtime: currentEvent.end_time || "",
+        date: currentEvent.date || "",
+        price: currentEvent.price || "",
+        details: currentEvent.details || "",
+        image_url: currentEvent.image_url || "",
+        });
+    }, [currentEvent]); 
+
     const updateTyping = (e) => {
         setInputInProgress({ ...inputInProgress, [e.target.name]: e.target.value });
       }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        // console.log(`input is ${inputInProgress.searchBar}`)
-        // const searchTerm = inputInProgress.searchBar;
-        // setInputInProgress({searchBar:''})
-        addNewEvent()
-        navigate(`/events`);
+        updateEvent()
+        navigate(`/events/${eventID}`);
       }
 
-      const addNewEvent = async () => {
- 
+      const updateEvent = async () => {
+    
         try {
-          const response = await axios.post("http://127.0.0.1:8000/events/", {
+        const response = await axios.put(`http://127.0.0.1:8000/events/${eventID}`, {
             venue_id: inputInProgress.venue,
             name: inputInProgress.name,
             start_time: inputInProgress.starttime,
@@ -43,24 +65,54 @@ export default function EventCreationPage() {
             price: inputInProgress.price,
             details: inputInProgress.details,
             image_url: inputInProgress.image_url
-          }, {
+        }, {
             headers: {
-              "Content-Type": "application/json",
+            "Content-Type": "application/json",
             },
-          });
-     
-            console.log(`event is ${response.data}`)
-     
-            if (response.status === 201) {
-                console.log("event created");
+        });
+            
+            console.log(`users are ${response.data}`)
+            if (response.status === 200) {
+                console.log("event updated");
             } else {
-                console.error("Failed to add event:", response.statusText);
+                console.error("Failed to update event:", response.statusText);
             }
         } catch (error) {
-          console.error("Error:", error)
+        console.error("Error:", error)
         }
+    
+    }
+
+    //   const addNewEvent = async () => {
+ 
+    //     try {
+    //       const response = await axios.post("http://127.0.0.1:8000/events/", {
+    //         venue_id: inputInProgress.venue,
+    //         name: inputInProgress.name,
+    //         start_time: inputInProgress.starttime,
+    //         end_time: inputInProgress.endtime,
+    //         date: inputInProgress.date,
+    //         price: inputInProgress.price,
+    //         details: inputInProgress.details,
+    //         image_url: inputInProgress.image_url
+    //       }, {
+    //         headers: {
+    //           "Content-Type": "application/json",
+    //         },
+    //       });
+     
+    //         console.log(`event is ${response.data}`)
+     
+    //         if (response.status === 201) {
+    //             console.log("event created");
+    //         } else {
+    //             console.error("Failed to add event:", response.statusText);
+    //         }
+    //     } catch (error) {
+    //       console.error("Error:", error)
+    //     }
       
-      };
+    //   };
 
     return(
         <div className="form">

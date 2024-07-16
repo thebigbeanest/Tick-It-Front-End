@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react'
-import {useParams, Link} from 'react-router-dom'
+import {useParams, Link, useNavigate} from 'react-router-dom'
 import axios from 'axios'
 
 
 export default function EventExpandedPage (props) {
 
   const [event, setEvent] = useState('')
-
+  let navigate = useNavigate()
+  const openEditor = (e) => {
+    navigate(`/editevent/${eventID}`);
+  }
   let {eventID} = useParams() 
 
   useEffect(() => {
@@ -29,7 +32,7 @@ export default function EventExpandedPage (props) {
         <div className='expandedText'>
         <h2>{event.name}</h2>
         <h3>Details: {event.details}</h3>
-
+        <button onClick={openEditor}>Edit Event</button>
         </div>
         <img src = {event.image_url} 
         className='expandedImage'
