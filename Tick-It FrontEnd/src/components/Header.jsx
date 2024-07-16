@@ -48,7 +48,11 @@ useEffect(() => {
       
       <div className="header">
         <h1>Ticket Master</h1>
+        <button>
+            <Link to ='/newevent' className='neweventbutton'>Create Event</Link>
+        </button>
         <Nav/>
+
         <form className="searchBar" onSubmit={handleSubmit}>
         <input className="searchBar"
           name="searchBar"
