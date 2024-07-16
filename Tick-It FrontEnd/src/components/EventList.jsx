@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+
 
 export default function EventList () {
 
@@ -44,6 +45,9 @@ export default function EventList () {
                             
                             <h2>{event.name}</h2>
                             <h3>Price: {event.price}</h3>
+                            <button>
+                            <Link to ='/newevent' className='neweventbutton'>Create Event</Link>
+                            </button>
                         </div>    
                     ))
                 }
