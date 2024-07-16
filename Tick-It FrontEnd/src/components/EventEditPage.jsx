@@ -82,38 +82,7 @@ export default function EventCreationPage() {
         }
     
     }
-
-    //   const addNewEvent = async () => {
- 
-    //     try {
-    //       const response = await axios.post("http://127.0.0.1:8000/events/", {
-    //         venue_id: inputInProgress.venue,
-    //         name: inputInProgress.name,
-    //         start_time: inputInProgress.starttime,
-    //         end_time: inputInProgress.endtime,
-    //         date: inputInProgress.date,
-    //         price: inputInProgress.price,
-    //         details: inputInProgress.details,
-    //         image_url: inputInProgress.image_url
-    //       }, {
-    //         headers: {
-    //           "Content-Type": "application/json",
-    //         },
-    //       });
-     
-    //         console.log(`event is ${response.data}`)
-     
-    //         if (response.status === 201) {
-    //             console.log("event created");
-    //         } else {
-    //             console.error("Failed to add event:", response.statusText);
-    //         }
-    //     } catch (error) {
-    //       console.error("Error:", error)
-    //     }
-      
-    //   };
-
+    
     return(
         <div className="form">
 
