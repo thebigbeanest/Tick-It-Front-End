@@ -15,7 +15,7 @@ useEffect(() => {
     if (searchedEvent) {
       navigate(`/events/${searchedEvent.id}`);
     }
-  }, [searchedEvent, navigate]);
+  }, [searchedEvent]);
 
   const updateTyping = (e) => {
     setInputInProgress({ ...inputInProgress, [e.target.name]: e.target.value });

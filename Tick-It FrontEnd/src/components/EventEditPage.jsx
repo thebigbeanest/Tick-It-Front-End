@@ -53,6 +53,10 @@ export default function EventCreationPage() {
         navigate(`/events/${eventID}`);
       }
 
+      const returnToEvent = (eventID) => {
+        navigate(`/events/${eventID}`)
+      }
+
       const updateEvent = async () => {
     
         try {
@@ -153,6 +157,7 @@ export default function EventCreationPage() {
         />
         <button className="searchBtn">Submit</button>
       </form>
+      <button className="searchBtn" onClick={() => returnToEvent(eventID)}>Cancel</button>
       </div>
 
 

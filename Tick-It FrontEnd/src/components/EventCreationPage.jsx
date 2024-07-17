@@ -24,11 +24,12 @@ export default function EventCreationPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        // console.log(`input is ${inputInProgress.searchBar}`)
-        // const searchTerm = inputInProgress.searchBar;
-        // setInputInProgress({searchBar:''})
         addNewEvent()
         navigate(`/events`);
+      }
+
+      const returnToEvents = () => {
+        navigate(`/events`)
       }
 
       const addNewEvent = async () => {
@@ -132,6 +133,7 @@ export default function EventCreationPage() {
         />
         <button className="searchBtn">Submit</button>
       </form>
+      <button className="searchBtn" onClick={returnToEvents}>Cancel</button>
       </div>
 
 
