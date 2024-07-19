@@ -51,6 +51,10 @@ const deleteEvent = async (e) => {
       <div className='expandedBody'>
         <div className='expandedText'>
         <h2>{event.name}</h2>
+        <h3>Start time: {event.start_time}</h3>
+        <h3>End time: {event.end_time}</h3>
+        <h3>Date: {event.date}</h3>
+        <h3>Price: {event.price}</h3>
         <h3>Details: {event.details}</h3>
         <button onClick={openEditor}>Edit Event</button>
         <button onClick={deleteEvent}>Delete Event</button>

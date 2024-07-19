@@ -41,6 +41,9 @@ export default function VenueExpandedPage (props) {
         <div className='expandedText'>
         <h2>{venue.name}</h2>
         <h3>Description: {venue.details}</h3>
+        <h3>Location: {venue.location}</h3>
+        <h3>Capacity: {venue.capacity}</h3>
+        <h3>Type: {venue.type}</h3>
 
         </div>
         <img src = {venue.image_url} 
